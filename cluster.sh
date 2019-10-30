@@ -10,16 +10,16 @@ LOCK_FILES=1
 DEBUG=1
 
 # Temporary files
-lock_queue="./Aurora/files/.lock_queue.txt"
-lock_user="./Aurora/files/.lock_user.txt"
+lock_queue="./Cluster/files/.lock_queue.txt"
+lock_user="./Cluster/files/.lock_user.txt"
 declare -a TEMP_FILES=("$lock_queue" "$lock_user")
 
 # Permanent files
-active_nodes="./Aurora/files/active_nodes.txt"
-free_queue="./Aurora/files/free_queue.txt"
-err_log="./Aurora/files/error_log.txt"
-queue_file="./Aurora/files/queue.txt"
-test_main="./Aurora/files/test_aurora.sh"
+active_nodes="./Cluster/files/active_nodes.txt"
+free_queue="./Cluster/files/free_queue.txt"
+err_log="./Cluster/files/error_log.txt"
+queue_file="./Cluster/files/queue.txt"
+test_main="./Cluster/files/test_cluster.sh"
 
 declare -a PERMA_FILES=(\
 	"$active_nodes"\
@@ -31,10 +31,10 @@ declare -a PERMA_FILES=(\
 
 # Directories
 declare -a DIRS=(\
-	"./Aurora"\
-	"./Aurora/docs"\
-	"./Aurora/files"\
-	"./Aurora/tests"\
+	"./Cluster"\
+	"./Cluster/docs"\
+	"./Cluster/files"\
+	"./Cluster/tests"\
 	)
 
 # Trap for <Ctrl+C> for cleaning
@@ -84,7 +84,7 @@ function check_structure () {
 
 function welcome_screen () {
 	clear
-	echo -e "\e[93maurora.sh\e[0m"
+	echo -e "\e[93mcluster.sh\e[0m"
 
 	h=$(date +%H)
 	if [ $h -lt 12 ]; then
@@ -773,7 +773,7 @@ function seek_queue () {
 function help () {
 	cat << EOF
 Usage:
-	aurora.sh [FLAGS] <OPTION...>
+	cluster.sh [FLAGS] <OPTION...>
 Description:
 	Manages jobs on abax
 
